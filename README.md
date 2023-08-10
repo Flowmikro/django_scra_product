@@ -1,0 +1,1 @@
+# django_scra_product
