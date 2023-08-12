@@ -21,7 +21,6 @@ async def start(message):
 def scrape_and_save():
     for i in range(1, 6):
         url = f'https://superstep.ru/catalog/?q=%D0%BA%D1%80%D0%BE%D1%81%D1%81%D0%BE%D0%B2%D0%BA%D0%B8&how=r&PAGEN_2={i}'
-        print(url)
         req = requests.get(url)
         src = req.text
 
