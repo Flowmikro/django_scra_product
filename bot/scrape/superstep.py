@@ -7,8 +7,8 @@ from product.models import Shoes
 
 def scrape_and_save():
     headers = {
-        'Accept': '*/*',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'
+        'Accept': '...',
+        'User-Agent': '...'
     }
     Shoes.objects.all().delete()
     for i in range(1, 6):
