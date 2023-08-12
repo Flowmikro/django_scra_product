@@ -7,4 +7,4 @@ from bot.main_bot import bot
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        asyncio.run(bot.polling())
+        asyncio.run(bot.polling(none_stop=True))
