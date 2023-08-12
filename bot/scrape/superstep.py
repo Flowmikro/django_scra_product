@@ -21,7 +21,7 @@ def scrape_and_save():
             img = 'https://superstep.ru' + product.find('img', class_='product-item-image product-item-image_first')['src']
             url = 'https://superstep.ru' + product.find('a', class_='cur_p js-catalog-card-click')['href']
             price = product.find('span', class_='product-sale-price').text[:-4].replace(' ', '')
-            if int(price) <= 16000:
+            if int(price) <= 15000:
                 try:
                     Shoes.objects.get(url=url)  # знаю что лучше в модели добавить unique
 
