@@ -1,0 +1,16 @@
+.card {
+  width: 18rem;
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+@media (max-width: 992px) {
+  .card {
+    margin-right: 0;
+  }
+}
+@media (max-width: 576px) {
+  .card {
+    width: 100%;
+  }
+}
