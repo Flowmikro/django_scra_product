@@ -1,5 +1,5 @@
-from django.core.management.base import BaseCommand
 import asyncio
+from django.core.management.base import BaseCommand
 
 from bot.main_bot import bot
 
