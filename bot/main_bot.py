@@ -1,5 +1,4 @@
 import asyncio
-
 import requests
 from django.core.exceptions import ObjectDoesNotExist
 from telebot.async_telebot import AsyncTeleBot
@@ -20,13 +19,15 @@ src = req.text
 @bot.message_handler(commands=['start'])
 async def start(message):
     loop = asyncio.get_event_loop()
-    await loop.run_in_executor(None, scrape_and_save)
-    await bot.reply_to(message, 'Готово!')
+    inn, not_inn = await loop.run_in_executor(None, scrape_and_save)
+    await bot.reply_to(message, f'Добавлено товаров {inn}, не добавлено {not_inn} дорогих товаров')
 
 
 def scrape_and_save():
     soup = BeautifulSoup(src, features="html.parser")
     all_products = soup.find_all(class_='product-item-wrapper js-product-wrapper')
+    inn = 0  # счетчик показывает сколько товаров добавилось
+    not_inn = 0  # счетчик показывает количество дорогих
 
     for i in all_products:
         img = 'https://superstep.ru' + i.find('img', class_='product-item-image product-item-image_first')['src']
@@ -34,14 +35,17 @@ def scrape_and_save():
         price = i.find('span', class_='product-sale-price').text[:-4].replace(' ', '')
         if int(price) <= 16000:
             try:
-                Shoes.objects.get(url=url)
-                print(f"Товар уже есть в базе данных")
+                Shoes.objects.get(url=url)  # знаю что лучше в модели добавить unique
+
             except ObjectDoesNotExist:
                 Shoes.objects.create(
                     img=img,
                     url=url,
                     price=price,
                 )
-                print(f"Товар успешно добавлен в базу данных")
+                inn += 1
         else:
-            print('Товар дорогой')
+            not_inn += 1
+
+    return inn, not_inn
+
