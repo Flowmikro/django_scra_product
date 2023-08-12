@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+TOKEN_BOT = '6388089933:AAF2BViA9AQwZsLFdVahavts7oU4PEl9vPc'
 
 # Application definition
 
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'product',
+    'bot',
 ]
 
 MIDDLEWARE = [
