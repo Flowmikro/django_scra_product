@@ -24,7 +24,6 @@ async def start(message):
     await bot.reply_to(message, f'Добавлено товаров {count_add_product}')
 
 
-# Этот хэндлер будет срабатывать на остальные любые сообщения
 @bot.message_handler()
 async def process_other_text_answers(message):
     await bot.send_message(message.chat.id, 'Я довольно ограниченный бот, давайте '
