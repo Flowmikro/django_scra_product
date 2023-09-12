@@ -3,4 +3,4 @@
 Приложение также выводит содержимое из БД в HTML.\
 Также реализован функционал, где парсинг можно запустить через телеграмм бот.
 # Стек 
-Django, , SQLite, Bootstrap,HTML/CSS, bs4, pyTelegramBotAPI, requests.
+Django, SQLite, Bootstrap,HTML/CSS, bs4, pyTelegramBotAPI, requests.
